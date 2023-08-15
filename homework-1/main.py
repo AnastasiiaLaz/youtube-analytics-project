@@ -1,10 +1,12 @@
+from urllib import request
+
 from src.channel import Channel
 
 if __name__ == '__main__':
     moscowpython = Channel('UC-OVMPlMA3-YCIeg4z5z23A')
     moscowpython.print_info()
 
-    """
+"""
 {
   "kind": "youtube#channelListResponse",
   "etag": "uAdmwT0aDhY9LmAzJzIafD6ATRw",
@@ -48,11 +50,10 @@ if __name__ == '__main__':
       "statistics": {
         "viewCount": "2303120",
         "subscriberCount": "25900",
-        "hiddenSubscriberCount": false,
+        "hiddenSubscriberCount": False,
         "videoCount": "685"
       }
     }
   ]
 }
-
-    """
+"""
