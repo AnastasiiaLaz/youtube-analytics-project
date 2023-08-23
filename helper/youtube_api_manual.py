@@ -7,8 +7,8 @@ from googleapiclient.discovery import build
 import isodate
 
 
-YT_API_KEY = 'AIzaSyB9owKVw7SBV925QMSK_qUQhArDFejcnec'
-api_key: str = os.getenv('YT_API_KEY')
+API_KEY = 'AIzaSyB9owKVw7SBV925QMSK_qUQhArDFejcnec'
+api_key: str = os.getenv('API_KEY')
 
 # создать специальный объект для работы с API
 youtube = build('youtube', 'v3', developerKey=api_key)
