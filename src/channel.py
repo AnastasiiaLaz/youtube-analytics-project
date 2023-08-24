@@ -17,8 +17,7 @@ class Channel:
         self.subscriber_count = 0
         self.video_count = 0
         self.view_count = 0
-
-        #self.get_channel_info()
+        self.get_channel_info()
 
     def get_channel_info(self):
         """
@@ -27,8 +26,8 @@ class Channel:
         youtube = self.get_service()
         channel = youtube.channels().list(id=self.channel_id, part='snippet,statistics').execute()
         if 'items' in channel:
-            channel_info = channel['items'][0]
-            self.title = channel_info['items'][0]['snippet']['title']
+            channel_info = channel['items']
+            self.title = channel_info['snippet']['title']
             self.description = channel_info['snippet']['description']
             self.url = channel_info['snippet']['thumbnails']['default']['url']
             self.subscriber_count = channel_info['statistics']['subscriberCount']
@@ -39,22 +38,22 @@ class Channel:
         return f"{self.title} ({self.url})"
 
     def __add__(self, other):
-        return self.subscriber_count + other.subscriber_count
+        return int(self.subscriber_count) + int(other.subscriber_count)
 
     def __sub__(self, other):
-        return self.subscriber_count - other.subscriber_count
+        return int(self.subscriber_count) - int(other.subscriber_count)
 
     def __lt__(self, other):
-        return self.subscriber_count < other.subscriber_count
+        return int(self.subscriber_count) < int(other.subscriber_count)
 
     def __le__(self, other):
-        return self.subscriber_count <= other.subscriber_count
+        return int(self.subscriber_count) <= int(other.subscriber_count)
 
     def __gt__(self, other):
-        return self.subscriber_count > other.subscriber_count
+        return int(self.subscriber_count) > int(other.subscriber_count)
 
     def __ge__(self, other):
-        return self.subscriber_count >= other.subscriber_count
+        return int(self.subscriber_count) >= int(other.subscriber_count)
 
     @classmethod
     def get_service(cls):
