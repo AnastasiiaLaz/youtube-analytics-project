@@ -26,7 +26,7 @@ class Channel:
         youtube = self.get_service()
         channel = youtube.channels().list(id=self.channel_id, part='snippet,statistics').execute()
         if 'items' in channel:
-            channel_info = channel['items']
+            channel_info = channel['items'][0]
             self.title = channel_info['snippet']['title']
             self.description = channel_info['snippet']['description']
             self.url = channel_info['snippet']['thumbnails']['default']['url']
