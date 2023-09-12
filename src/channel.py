@@ -11,18 +11,6 @@ class Channel:
     def __init__(self, channel_id: str) -> None:
         """Экземпляр инициализируется id канала. Дальше все данные будут подтягиваться по API."""
         self.channel_id = channel_id
-        self.title = ''
-        self.description = ''
-        self.url = ''
-        self.subscriber_count = 0
-        self.video_count = 0
-        self.view_count = 0
-        self.get_channel_info()
-
-    def get_channel_info(self):
-        """
-        Получает инфу о канале из YouTube API
-        """
         youtube = self.get_service()
         channel = youtube.channels().list(id=self.channel_id, part='snippet,statistics').execute()
         if 'items' in channel:
@@ -79,5 +67,3 @@ class Channel:
         }
         with open(filename, 'w') as json_file:
             return json.dump(channel_data, json_file, indent=4)
-
-
